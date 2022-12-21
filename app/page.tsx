@@ -1,8 +1,13 @@
 import React from 'react'
+import ChatIput from './ChatIput';
+import Messages from './Messages';
 
 function HomePage() {
   return (
-    <div className='text-lg '>This is the chat app</div>
+    <div className='text-lg '>
+       <Messages />
+       <ChatIput />
+    </div>
   )
 }
 

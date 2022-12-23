@@ -8,14 +8,15 @@ function Header() {
     const session = true;
 
     if(session) return (
-        <header className=" h-24 bg-white sticky top-0 z-50  px-6 pb-2 shadow-md flex items-center justify-between">
+        <header className=" h-20 bg-white sticky top-0 z-50  px-6 pb-2 shadow-md flex items-center justify-between">
           <div className="flex space-x-3 items-center">
             <div >
             <Image
-                     className="rounded-full object-contain"
+                     className="rounded-full object-contain h-auto w-auto"
                     src='https://images.pexels.com/photos/432059/pexels-photo-432059.jpeg?auto=compress&cs=tinysrgb&w=1600'
                     width={50}
                     height={50}
+                  
                     alt="logo" />
                 
                 

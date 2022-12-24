@@ -6,11 +6,15 @@ type Props = {
 };
 
 function MessageComponent({ message }: Props) {
+    const isUser = false;
+
+
+
   return (
-    <div className="flex w-fit items-center">
-      <div className="flex-shrink-0">
+    <div className={`flex w-fit items-centre ${isUser && "ml-auto"} ` }>
+      <div className={`flex-shrink-0 ${isUser && "order-3"}`}>
         <Image
-          className="rounded-full mx-2 object-full"
+          className="rounded-full mx-2 "
           src="https://images.pexels.com/photos/14211152/pexels-photo-14211152.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
           width={50}
           height={10}
@@ -20,15 +24,15 @@ function MessageComponent({ message }: Props) {
 
 
       <div>
-        <p className="text-[0.65rem] px-[2px] pb-[2px]">{message.username}</p>
+        <p className={`text-[0.65rem] px-[2px] pb-[2px] ${isUser ? "text-blue-400 text-right" : "text-red-400 text-left"}`}>{message.username}</p>
 
         <div className="flex items-end">
-            <div className="px-3 py-2 bg-red-500 w-fit rounded-lg text-white ">
+            <div className={`px-3 py-2  w-fit rounded-lg text-white ${isUser ? "bg-blue-500 order-2  ml-auto" : "bg-red-500 "}`}>
                <p>{message.message}</p>
             </div>
           
             
-            <p className="text-[0.65rem] px-2 italic text-gray-300">{new Date(message.created_at).toLocaleString()}</p>
+            <p className={`text-[0.65rem] px-2 italic text-gray-300 ${isUser && " text-right"}`}>{new Date(message.created_at).toLocaleString()}</p>
             
         </div>
       </div>

@@ -12,7 +12,7 @@ function Messages() {
     const { data : messages, error, mutate } = useSWR<Message[]>('/api/getMessages', fetcher);
 
   return (
-    <div className="space-y-4  pt-10 px-5 pb-32 max-w-2xl">
+    <div className="space-y-4  pt-10 px-5 pb-32 max-w-2xl xl:max-w-4xl ">
        {messages?.map(message => (
         <MessageComponent key={message.id} message={message}/>
          

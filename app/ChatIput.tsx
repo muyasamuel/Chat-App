@@ -62,7 +62,7 @@ function ChatIput() {
   }
 
   return (
-    <form onSubmit={ addMessage} className=" fixed bottom-0 w-full flex py-10 px-4 space-x-2 border-t border-gray-100    ">
+    <form onSubmit={ addMessage} className=" fixed bottom-0 w-full flex py-10 px-4 space-x-2 border-t border-gray-100  bg-white   ">
       <input
         type="text"
         value={input}

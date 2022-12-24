@@ -6,7 +6,7 @@ const fetcher = async () => {
     const data = await res.json();
     const messages: Message[] = data.messages;
 
-    return messages
+    return messages;
   
 }
 

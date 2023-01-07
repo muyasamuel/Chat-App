@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { serverPusher } from '../../pusher';
 import redis from '../../redis';
 import { Message } from '../../typings';
 
@@ -25,7 +26,8 @@ export default async function Handler(req: NextApiRequest, res: NextApiResponse<
 
 
     //push message to upstash redis db
-    await redis.hset("messages", message.id , JSON.stringify(newMessage))
+    await redis.hset("messages", message.id , JSON.stringify(newMessage));
+    serverPusher.trigger('messages', "newMessage", newMessage)
 
     
 

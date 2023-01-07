@@ -6,7 +6,7 @@ type Props = {
 };
 
 function MessageComponent({ message }: Props) {
-    const isUser = false;
+    const isUser = true;
 
 
 

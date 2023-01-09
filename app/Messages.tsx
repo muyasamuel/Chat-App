@@ -7,6 +7,12 @@ import MessageComponent from "./MessageComponent";
 import { useEffect } from "react";
 import { clientPusher } from "../pusher";
 
+// type Props = {
+//   initialMessages : Message[]
+// }
+
+
+
 function Messages() {
   const {
     data: messages,
@@ -37,7 +43,7 @@ function Messages() {
 
   return (
     <div className="space-y-4  pt-10 px-5 pb-32 max-w-2xl xl:max-w-4xl ">
-      {messages?.map((message) => (
+      { messages?.map((message) => (
         <MessageComponent key={message.id} message={message} />
       ))}
     </div>
@@ -45,3 +51,7 @@ function Messages() {
 }
 
 export default Messages;
+
+
+
+

@@ -1,9 +1,9 @@
-import { getProviders } from "next-auth/react";
+// import { getProviders } from "next-auth/react";
 import Image from "next/image";
-import SignInComponent from "./SignInComponent";
+// import SignInComponent from "./SignInComponent";
 
 async function SignInPage() {
-  const providers = await getProviders();
+  // const providers = await getProviders();
   
   return (
     <div className="grid justify-center">
@@ -17,7 +17,7 @@ async function SignInPage() {
         />
       </div>
 
-      <SignInComponent providers={providers} />
+      {/* <SignInComponent providers={providers} /> */}
     </div>
   );
 }

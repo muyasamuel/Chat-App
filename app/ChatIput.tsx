@@ -1,13 +1,18 @@
 'use client'
+
 import useSWR from 'swr'
 import { Message } from "../typings";
-
 import  { useState } from "react";
 import { v4 as uuid } from "uuid";
 import fetcher from '../utilis/fetchMessages';
+import { unstable_getServerSession } from "next-auth";
 
 
-function ChatIput() {
+type Props = {
+  session: Awaited<ReturnType<typeof unstable_getServerSession>>;
+}
+
+function ChatIput({session}: Props) {
   const [input, setInput] = useState("");
 
  const { data : messages, error, mutate } = useSWR<Message[]>('/api/getMessages', fetcher);
@@ -66,6 +71,7 @@ function ChatIput() {
       <input
         type="text"
         value={input}
+        disabled={!session}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Enter Message Here.."
         className="flex-1 rounded border border-gray-600 focus:outline-none

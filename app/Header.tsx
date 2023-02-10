@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import LogoutButton from "./LogoutButton";
+import { unstable_getServerSession } from "next-auth";
 
 
-function Header() {
+async function Header() {
 
-    const session = true;
+    const session = await unstable_getServerSession();
 
     if(session) return (
         <header className=" h-20 bg-white sticky top-0 z-50  px-6 pb-2 shadow-md flex items-center justify-between">
@@ -47,7 +48,7 @@ function Header() {
             </div>
             <p className="text-blue-600 capitalize"> Welcome to Chat App</p>
            </div>
-           <Link className="bg-blue-500 hover:bg-blue-700  px-8 py-2 rounded-md" href='auth/signIn'> Sign In</Link>
+           <Link className="bg-blue-500 hover:bg-blue-700  px-8 py-2 rounded-md" href='auth/signin'> Sign In</Link>
         </div>
         
     </header>

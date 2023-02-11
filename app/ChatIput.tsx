@@ -1,33 +1,37 @@
-'use client'
+"use client";
 
 import useSWR from 'swr'
 import { Message } from "../typings";
 import  { useState } from "react";
 import { v4 as uuid } from "uuid";
 import fetcher from '../utilis/fetchMessages';
-import { unstable_getServerSession } from "next-auth";
+import { unstable_getServerSession } from 'next-auth';
+
+
 
 
 type Props = {
-  session: Awaited<ReturnType<typeof unstable_getServerSession>>;
+  session: Awaited<ReturnType<typeof unstable_getServerSession>>
 }
 
-function ChatIput({session}: Props) {
+function ChatIput({ session } : Props) {
+
+  
   const [input, setInput] = useState("");
 
- const { data : messages, error, mutate } = useSWR<Message[]>('/api/getMessages', fetcher);
+  const { data : messages, error, mutate } = useSWR<Message[]>('/api/getMessages', fetcher);
 
- console.log(messages);
+ 
 
 
 
   const addMessage = async (e:  React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if(!input)return;
+    if(!input || !session )return;
 
     const messageToSend = input;
-
+  
     setInput("")
 
     const id = uuid();
@@ -36,9 +40,9 @@ function ChatIput({session}: Props) {
         id: id,
         message: messageToSend,
         created_at: Date.now(),
-        username: "samuel muya",
-        profilePic: "https://images.pexels.com/photos/432059/pexels-photo-432059.jpeg?auto=compress&cs=tinysrgb&w=1600",
-        email: "iamsamuel6535@gmail.com"
+        username: session?.user?.name!,
+        profilePic:  session?.user?.image!,
+        email: session?.user?.email!
 
     }
 

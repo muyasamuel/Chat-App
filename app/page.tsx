@@ -11,6 +11,7 @@ async function HomePage() {
    
   const messages: Message[] = data.messages;
   const session = await unstable_getServerSession();
+ 
 
 
 
@@ -21,7 +22,7 @@ async function HomePage() {
       <main>
       <Messages initialMessages={messages} />
       <ChatIput session={session} />
-    </main>
+      </main>
     </Providers>
    
   );

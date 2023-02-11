@@ -10,21 +10,19 @@ async function Header() {
 
     if(session) return (
         <header className=" h-20 bg-white sticky top-0 z-50  px-6 pb-2 shadow-md flex items-center justify-between">
-          <div className="flex space-x-3 items-center">
-            <div >
+          <div className="flex space-x-2 items-center">
             <Image
-                     className="rounded-full object-contain h-auto w-auto"
-                    src='https://images.pexels.com/photos/432059/pexels-photo-432059.jpeg?auto=compress&cs=tinysrgb&w=1600'
+                    className="rounded-full object-contain   "
+                    src={session.user?.image!}
                     width={50}
                     height={50}
-                  
-                    alt="logo" />
+                    alt="profile pic" />
                 
                 
-            </div>
+            
             <div>
                 <p className="text-blue-500">logged in as:</p>
-                <p className="font-bold text-black">Samuel Muya</p>
+                <p className="font-bold text-black">{session.user?.name}</p>
             </div>
           </div>
 
@@ -42,8 +40,8 @@ async function Header() {
             <div >
                <Image
                 src='https://t4.ftcdn.net/jpg/03/05/15/39/240_F_305153908_dJ6ZNYHvovu3CM7uUXlS7FPBYWFGRhVu.jpg'
-                width={80}
-                height={80}
+                width={60}
+                height={60}
                 alt="logo" />
             </div>
             <p className="text-blue-600 capitalize"> Welcome to Chat App</p>

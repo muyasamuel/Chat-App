@@ -1,12 +1,16 @@
 import { Message } from "../typings";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 type Props = {
   message: Message;
 };
 
 function MessageComponent({ message }: Props) {
-    const isUser = true;
+    
+    const { data: session } = useSession();
+    const isUser = session?.user?.email === message.email;
+   
 
 
 
@@ -15,10 +19,10 @@ function MessageComponent({ message }: Props) {
       <div className={`flex-shrink-0 ${isUser && "order-3"}`}>
         <Image
           className="rounded-full mx-2 "
-          src="https://images.pexels.com/photos/14211152/pexels-photo-14211152.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
-          width={50}
+          src={message.profilePic}
+          width={40}
           height={10}
-          alt="logo"
+          alt="profile pic"
         />
       </div>
 

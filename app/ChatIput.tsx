@@ -40,9 +40,9 @@ function ChatIput({ session } : Props) {
         id: id,
         message: messageToSend,
         created_at: Date.now(),
-        username: session?.user?.name!,
+        username: session?.username?.name!,
         profilePic:  session?.user?.image!,
-        email: session?.user?.email!
+        email: session?.user?.email 
 
     }
 

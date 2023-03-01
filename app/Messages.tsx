@@ -42,7 +42,7 @@ function Messages({initialMessages} : Props) {
   }, [mutate, messages]);
 
   return (
-    <div className="space-y-4  pt-10 px-5 pb-32 max-w-2xl xl:max-w-4xl ">
+    <div className="space-y-4  pt-10 px-5 pb-32 max-w-full ">
       {(messages || initialMessages).map((message) => (
         <MessageComponent key={message.id} message={message} />
       ))}

@@ -2,19 +2,21 @@
 
 import useSWR from 'swr'
 import { Message } from "../typings";
-import  { useState } from "react";
+import  { FormEvent ,useState } from "react";
 import { v4 as uuid } from "uuid";
 import fetcher from '../utilis/fetchMessages';
-import { unstable_getServerSession } from 'next-auth';
+import { unstable_getServerSession } from 'next-auth/next';
+
 
 
 
 
 type Props = {
-  session: Awaited<ReturnType<typeof unstable_getServerSession>>
+  session: Awaited<ReturnType<typeof unstable_getServerSession>>;
 }
 
 function ChatIput({ session } : Props) {
+
 
   
   const [input, setInput] = useState("");
@@ -25,7 +27,7 @@ function ChatIput({ session } : Props) {
 
 
 
-  const addMessage = async (e:  React.FormEvent<HTMLFormElement>) => {
+  const addMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if(!input || !session )return;
@@ -36,15 +38,21 @@ function ChatIput({ session } : Props) {
 
     const id = uuid();
 
+
+
     const message: Message = {
         id: id,
         message: messageToSend,
         created_at: Date.now(),
-        username: session?.username?.name!,
-        profilePic:  session?.user?.image!,
-        email: session?.user?.email 
+        username: session?.user?.name!,
+        profilePic: session?.user.image!,
+        email: session?.user?.email!
 
     }
+
+
+    
+   
 
     const uploadMessageToUpstash = async () => {
         const data = await fetch("/api/addMessage", {

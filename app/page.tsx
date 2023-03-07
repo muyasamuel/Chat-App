@@ -1,4 +1,4 @@
-import { unstable_getServerSession } from "next-auth";
+import { unstable_getServerSession } from "next-auth/next";
 import { Message } from "../typings";
 import ChatIput from "./ChatIput";
 import Messages from "./Messages";

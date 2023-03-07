@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import LogoutButton from "./LogoutButton";
-import { unstable_getServerSession } from "next-auth";
+import { unstable_getServerSession } from "next-auth/next";
 
 
 async function Header() {

@@ -5,21 +5,15 @@ import { Message } from "../typings";
 import  { FormEvent ,useState } from "react";
 import { v4 as uuid } from "uuid";
 import fetcher from '../utilis/fetchMessages';
-import { unstable_getServerSession } from 'next-auth/next';
+// import { unstable_getServerSession } from 'next-auth/next';
 
 
+function ChatInput() {
 
-
-
-type Props = {
-  session: Awaited<ReturnType<typeof unstable_getServerSession>>;
-}
-
-function ChatIput({ session } : Props) {
-
-
+ const session = true;
   
   const [input, setInput] = useState("");
+ 
 
   const { data : messages, error, mutate } = useSWR<Message[]>('/api/getMessages', fetcher);
 
@@ -44,9 +38,9 @@ function ChatIput({ session } : Props) {
         id: id,
         message: messageToSend,
         created_at: Date.now(),
-        username: session?.user?.name!,
-        profilePic: session?.user.image!,
-        email: session?.user?.email!
+        username: "njomo",
+        profilePic: "https://images.pexels.com/photos/15846195/pexels-photo-15846195.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+        email: "njomo@gmail.com"
 
     }
 
@@ -99,4 +93,4 @@ function ChatIput({ session } : Props) {
   );
 }
 
-export default ChatIput;
+export default ChatInput;

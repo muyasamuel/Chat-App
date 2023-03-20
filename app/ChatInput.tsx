@@ -2,22 +2,18 @@
 
 import useSWR from 'swr'
 import { Message } from "../typings";
-import  { useState } from "react";
+import  { FormEvent ,useState } from "react";
 import { v4 as uuid } from "uuid";
 import fetcher from '../utilis/fetchMessages';
-import { unstable_getServerSession } from 'next-auth';
+// import { unstable_getServerSession } from 'next-auth/next';
 
 
+function ChatInput() {
 
-
-type Props = {
-  session: Awaited<ReturnType<typeof unstable_getServerSession>>
-}
-
-function ChatIput({ session } : Props) {
-
+ const session = true;
   
   const [input, setInput] = useState("");
+ 
 
   const { data : messages, error, mutate } = useSWR<Message[]>('/api/getMessages', fetcher);
 
@@ -25,7 +21,7 @@ function ChatIput({ session } : Props) {
 
 
 
-  const addMessage = async (e:  React.FormEvent<HTMLFormElement>) => {
+  const addMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if(!input || !session )return;
@@ -36,15 +32,21 @@ function ChatIput({ session } : Props) {
 
     const id = uuid();
 
+
+
     const message: Message = {
         id: id,
         message: messageToSend,
         created_at: Date.now(),
-        username: session?.user?.name!,
-        profilePic:  session?.user?.image!,
-        email: session?.user?.email!
+        username: "njomo",
+        profilePic: "https://images.pexels.com/photos/15846195/pexels-photo-15846195.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+        email: "njomo@gmail.com"
 
     }
+
+
+    
+   
 
     const uploadMessageToUpstash = async () => {
         const data = await fetch("/api/addMessage", {
@@ -91,4 +93,4 @@ function ChatIput({ session } : Props) {
   );
 }
 
-export default ChatIput;
+export default ChatInput;

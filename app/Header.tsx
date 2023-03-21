@@ -1,12 +1,11 @@
+import  { unstable_getServerSession } from "next-auth/next"
 import Image from "next/image";
 import Link from "next/link";
 import LogoutButton from "./LogoutButton";
-// import { unstable_getServerSession } from "next-auth/next";
-// import { NextPage } from "next";
 
 
-const Header = () => {
-  const session = true;
+  const Header = async () => {
+  const session = await unstable_getServerSession();
 
 
   if (session) {
@@ -23,7 +22,7 @@ const Header = () => {
 
           <div>
             <p className="text-blue-500">logged in as:</p>
-            <p className="font-bold text-black">Njomo</p>
+            <p className="font-bold text-black">{session.user?.name}</p>
           </div>
         </div>
 

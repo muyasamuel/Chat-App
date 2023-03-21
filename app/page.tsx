@@ -1,4 +1,4 @@
-// import { unstable_getServerSession } from "next-auth/next";
+import  { unstable_getServerSession } from "next-auth/next"
 import { Message } from "../typings";
 import ChatInput from "./ChatInput";
 import Messages from "./Messages";
@@ -13,17 +13,20 @@ async function HomePage() {
   );
    
   const messages: Message[] = data.messages;
-  // const session = await unstable_getServerSession();
+  const session = await unstable_getServerSession();
+
 
  
 
   return (
-    <Providers >
-      <main>
+   <Providers session={session}>
+        <main>
         <Messages initialMessages={messages} />
         <ChatInput  />
       </main>
-    </Providers>
+ 
+   </Providers>
+      
   );
 }
 

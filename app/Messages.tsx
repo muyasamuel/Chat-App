@@ -14,6 +14,8 @@ type Props = {
 
 
 function Messages({initialMessages} : Props) {
+
+
   const {
     data: messages,
     error,

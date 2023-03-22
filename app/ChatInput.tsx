@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 import fetcher from "../utilis/fetchMessages";
 
 
-function ChatInput({ session }: { session: any }) {
+function ChatInput({ session }: any ) {
   const [input, setInput] = useState("");
 
   const {

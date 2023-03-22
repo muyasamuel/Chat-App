@@ -5,8 +5,6 @@ import Messages from "./Messages";
 import { Providers } from "./providers";
 
 
-
-
 async function HomePage() {
   const data = await fetch("http://localhost:3000/api/getMessages").then((res) =>
     res.json()
@@ -16,14 +14,12 @@ async function HomePage() {
   const session = await unstable_getServerSession();
 
 
- 
-
   return (
    <Providers session={session}>
         <main>
-        <Messages initialMessages={messages} />
-        <ChatInput  />
-      </main>
+          <Messages initialMessages={messages} />
+          <ChatInput session={session}  />
+        </main>
  
    </Providers>
       

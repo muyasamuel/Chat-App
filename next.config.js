@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['t4.ftcdn.net','images.pexels.com',"platform-lookaside.fbsbx.com"]
+    domains: ['t4.ftcdn.net', 'encrypted-tbn0.gstatic.com','images.pexels.com',"platform-lookaside.fbsbx.com"]
   },
   experimental: {
     appDir: true

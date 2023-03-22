@@ -14,7 +14,7 @@ import LogoutButton from "./LogoutButton";
         <div className="flex space-x-2 items-center">
           <Image
             className="rounded-full object-contain"
-            src="https://images.pexels.com/photos/15846195/pexels-photo-15846195.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            src={session.user?.image!}
             width={50}
             height={50}
             alt="profile pic"
@@ -37,19 +37,18 @@ import LogoutButton from "./LogoutButton";
         <div className="flex items-center space-x-2 ">
           <div>
             <Image
-              src="https://t4.ftcdn.net/jpg/03/05/15/39/240_F_305153908_dJ6ZNYHvovu3CM7uUXlS7FPBYWFGRhVu.jpg"
-              width={60}
-              height={60}
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQlKVsgVJyVp8nSt38L3JFfphnjSUZcw3-Y7XXM-vy4SeNzRI-Wi92KCAlEzDbv9yBVOY&usqp=CAU"
+              width={80}
+              height={80}
               alt="logo"
             />
           </div>
-          <p className="text-blue-600 capitalize"> Welcome to Chat App</p>
+          <p className="text-blue-600 capitalize "> Welcome to Chat App</p>
         </div>
         <Link
           className="bg-blue-500 hover:bg-blue-700  px-8 py-2 rounded-md"
           href="auth/signin"
         >
-          {" "}
           Sign In
         </Link>
       </div>

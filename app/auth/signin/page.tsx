@@ -21,7 +21,7 @@ import SignInComponent from "./SignInComponent";
       <div>
         <Image
           className="rounded-full object-contain h-auto w-auto"
-          src="http://t4.ftcdn.net/jpg/03/05/15/39/240_F_305153908_dJ6ZNYHvovu3CM7uUXlS7FPBYWFGRhVu.jpg"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQlKVsgVJyVp8nSt38L3JFfphnjSUZcw3-Y7XXM-vy4SeNzRI-Wi92KCAlEzDbv9yBVOY&usqp=CAU"
           width={700}
           height={700}
           alt="logo"

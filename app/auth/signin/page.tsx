@@ -2,20 +2,9 @@ import { getProviders, signIn } from "next-auth/react";
 import Image from "next/image";
 import SignInComponent from "./SignInComponent";
 
-
-
-
-
- async function SignInPage() {
-
+async function SignInPage() {
   const providers = await getProviders();
-  
 
-    
-
-  
- 
-  
   return (
     <div className="grid justify-center space-x-1">
       <div>
@@ -27,12 +16,9 @@ import SignInComponent from "./SignInComponent";
           alt="logo"
         />
       </div>
-      
-      <SignInComponent providers={providers} />
-  
-     </div>
 
-    
+      <SignInComponent providers={providers} />
+    </div>
   );
 }
 export default SignInPage;

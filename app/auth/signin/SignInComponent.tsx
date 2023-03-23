@@ -1,18 +1,23 @@
 'use client'
-import { getProviders, signIn } from "next-auth/react";
+
+import { getProviders, signIn, signOut } from "next-auth/react";
 
 type Props = {
-    providers: Awaited<ReturnType<typeof getProviders>> | null | undefined;
+    providers: Awaited<ReturnType<typeof getProviders>> | null;
 }
 
 function SignInComponent ({providers}: Props) {
+    if (!providers) {
+        return <div>No providers available</div>;
+    }
+
     return (
       <div className="flex justify-center ">
-          {  Object.values(providers!).map((provider) => (
+          {  Object.values(providers).map((provider) => (
               <div  key={provider.name}>
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-2 rounded" onClick={() => signIn(provider.id ,{
-                      callbackUrl: process.env.VERCEL_URL || "http://localhost:3000"
-                  })}  >
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-2 rounded" onClick={() => signIn(provider.id, {
+                    callbackUrl: process.env.VERCEL_URL || "http://localhost:3000/"
+                  })}>
                       Sign In With {provider.name}
                   </button>
               </div>
@@ -22,5 +27,6 @@ function SignInComponent ({providers}: Props) {
 }
 
 export default SignInComponent;
+
 
   
